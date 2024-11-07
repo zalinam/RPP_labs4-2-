@@ -1,0 +1,25 @@
+name: Deploy Multilingual Site
+
+on:  
+  release:
+    types: [published]
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code #Загрузка репозитория в в рабочую среду GitHub Actions
+        uses: actions/checkout@v4
+        
+      - name: Set up Python #Установка версии интерпретатора Python на виртуальной ма-шине
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.x'
+          
+      - name: Deploy to GitHub Pages
+        uses: peaceiris/actions-gh-pages@v4
+        with:
+          GITHUB_TOKEN: ${{ secrets.REP_TOKEN }}
+          BRANCH: gh-pages
+          FOLDER: ./build_site
+          CLEAN: true
