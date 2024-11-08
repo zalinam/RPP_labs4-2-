@@ -3,9 +3,6 @@ name: Deploy Multilingual Site
 on:  
   release:
     types: [published]
-  push:
-    branches:
-      - main  
 
 jobs:
   deploy:
@@ -19,4 +16,5 @@ jobs:
         with:
           GITHUB_TOKEN: ${{ secrets.REP_TOKEN }}
           publish_dir: ./sites
+          target_branch: gh-pages-v${{ github.ref }} 
           keep_files: true
