@@ -10,7 +10,14 @@ jobs:
     steps:
       - name: Checkout code #Загрузка репозитория в в рабочую среду GitHub Actions
         uses: actions/checkout@v4
-      
+
+      - name: Create version directory
+        run: |
+          site_version=$(echo ${{ github.ref }} | cut -d/ -f2) #извлечение имени релиза
+          mk dir -p ./sites/versions/
+          mk dir -p ./sites/versions/v$site_version/ru/
+          mk dir -p ./sites/versions/v$site_version/en/      
+  
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v4
         with:
