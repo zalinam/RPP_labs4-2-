@@ -13,22 +13,10 @@ jobs:
     steps:
       - name: Checkout code #Загрузка репозитория в в рабочую среду GitHub Actions
         uses: actions/checkout@v4
-        
-      - name: Set up Python #Установка версии интерпретатора Python на виртуальной ма-шине
-        uses: actions/setup-python@v4
-        with:
-          python-version: '3.x'
-
-      # - name: Build project
-      #   run: npm run build
-          
+      
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v4
         with:
           GITHUB_TOKEN: ${{ secrets.REP_TOKEN }}
           publish_dir: ./sites
           keep_files: true
-          #BRANCH: gh-pages
-          # FOLDER: ./build_site
-          #FOLDER: public
-          #CLEAN: true
