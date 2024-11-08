@@ -14,9 +14,9 @@ jobs:
       - name: Create version directory
         run: |
           site_version=$(echo ${{ github.ref }} | cut -d/ -f2) #извлечение имени релиза
-          mkdir -p ./sites/versions/
           mkdir -p ./sites/versions/v${site_version}/ru/
           mkdir -p ./sites/versions/v${site_version}/en/ 
+           mkdir -p ./sites/versions/
   
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v4
