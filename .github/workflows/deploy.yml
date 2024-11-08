@@ -3,6 +3,9 @@ name: Deploy Multilingual Site
 on:  
   release:
     types: [published]
+  push:
+    branches:
+      - main  
 
 jobs:
   deploy:
